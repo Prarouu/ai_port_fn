@@ -1,6 +1,5 @@
-import React from "react";
 import { Button } from "../ui/button";
-import { Upload, UploadIcon } from "lucide-react";
+import { UploadIcon } from "lucide-react";
 import { motion } from "framer-motion";
 
 function Hero() {

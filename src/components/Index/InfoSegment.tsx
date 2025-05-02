@@ -1,6 +1,4 @@
-import React from "react";
 import { BrainCircuit, BriefcaseBusiness } from "lucide-react";
-import { motion } from "framer-motion";
 
 function InfoSegment() {
   return (

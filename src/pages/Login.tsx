@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import bg_img from "../assets/3D Abstract Black White Background.jpg";

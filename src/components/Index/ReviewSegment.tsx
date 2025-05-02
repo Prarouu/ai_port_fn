@@ -1,33 +1,35 @@
-import React from 'react';
-import sarahimg from '../../assets/ProfileImages/sarah.png';
-import guyimg from '../../assets/ProfileImages/guy.png';
-import samimg from '../../assets/ProfileImages/sam.png';
+import sarahimg from "../../assets/ProfileImages/sarah.png";
+import guyimg from "../../assets/ProfileImages/guy.png";
+import samimg from "../../assets/ProfileImages/sam.png";
 
-import { Card, CardContent } from '../ui/card';
+import { Card, CardContent } from "../ui/card";
 import {
   Carousel,
   CarouselItem,
   CarouselContent,
   CarouselNext,
   CarouselPrevious,
-} from '../ui/carousel';
+} from "../ui/carousel";
 
 const testimonials = [
   {
     name: "Sarah M.",
-    quote: "The portfolio analysis was incredibly helpful. It gave me a clear understanding of where I stand and helped me secure a great job!",
+    quote:
+      "The portfolio analysis was incredibly helpful. It gave me a clear understanding of where I stand and helped me secure a great job!",
     avatar: sarahimg,
   },
   {
     name: "Jay R.",
-    quote: "Got matched to an AI internship within a week. Super smooth experience!",
+    quote:
+      "Got matched to an AI internship within a week. Super smooth experience!",
     avatar: guyimg,
   },
   {
     name: "Sam K.",
-    quote: "Loved the clean UI and the deep insights into my skills. Highly recommend it!",
+    quote:
+      "Loved the clean UI and the deep insights into my skills. Highly recommend it!",
     avatar: samimg,
-  }
+  },
 ];
 
 function ReviewSegment() {
@@ -40,10 +42,7 @@ function ReviewSegment() {
       <Carousel className="relative w-full">
         <CarouselContent>
           {testimonials.map((testimonial, index) => (
-            <CarouselItem
-              key={index}
-              className="w-full flex justify-center"
-            >
+            <CarouselItem key={index} className="w-full flex justify-center">
               <Card className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 bg-white dark:bg-slate-800 px-6 py-8 sm:px-10 sm:py-10 rounded-2xl shadow-md text-center transition-all duration-300">
                 <CardContent className="flex flex-col items-center">
                   <img

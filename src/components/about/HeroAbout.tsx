@@ -1,5 +1,3 @@
-import React from "react";
-import { Button } from "../ui/button";
 import { motion } from "framer-motion";
 
 function HeroAbout() {

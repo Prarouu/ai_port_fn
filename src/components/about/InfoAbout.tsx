@@ -1,5 +1,3 @@
-import React from "react";
-import { Lightbulb } from "lucide-react";
 import { motion } from "framer-motion";
 
 import {

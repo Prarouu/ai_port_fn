@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "./ui/button";
 import { Shrimp, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
