@@ -4,45 +4,59 @@ import { motion } from "framer-motion";
 
 function Hero() {
   return (
-    <div className="m-auto bg-gray-100 h-2/4 w-70% px-2 py-10 sm:px-6 lg:px-8 flex-col items-center justify-center">
-      <motion.h1
-        initial={{ opacity: 0, y: 25 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-        className="w-3/4 py-1 mx-auto text-center text-4xl h-24 2xl:text-9xl 2xl:h-74 xl:text-8xl xl:h-58 lg:text-7xl lg:h-42 md:text-6xl md:h-36 sm:text-5xl sm:h-30"
-      >
-        AI-Poweered portfolio Analysis
-      </motion.h1>
-      <motion.p
-        initial={{ opacity: 0, y: 25 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-        className="w-3/4 mx-auto text-gray-400 text-xs text-center h-12 sm:text-xs sm:w-2/3 md:text-sm lg:text-sm xl:text-lg 2xl:text-xl"
-      >
-        Upload your portfolio to receive detailed insights and tallored job
-        matches.
-      </motion.p>
-      <motion.div
-        initial={{ opacity: 0, y: 25 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.8, ease: "easeInOut" }}
-        className="flex flex-col items-center justify-center"
-      >
-        <Button
-          variant="ghost"
-          className="bg-gray-100 p-2 m-2 w-58 h-14 flex items-center justify-around rounded-2xl border-2 border-gray-300 border-dashed md:w-72 md:h-18 xl:w-96 xl:h-20 xl:m-6 2xl:m-8 2xl:w-104 2xl:h-22"
+    <div className="relative w-full min-h-[80vh] bg-gradient-to-b from-gray-50 to-gray-100 overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 flex flex-col items-center justify-center min-h-[80vh]">
+        <motion.h1
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-center text-slate-800 mb-8 leading-tight"
         >
-          <h1 className="text-xs md:text-sm lg:text-md xl:text-lg 2xl:text-xl text-gray-400">
-            Upload 'PDF' or 'DOC' file
-          </h1>
-          <Button
-            variant="ghost"
-            className="bg-gray-200 h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 xl:h-14 xl:w-14 2xl:h-16 2xl:w-16 flex items-center justify-center"
-          >
-            <UploadIcon className="h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 xl:h-14 xl:w-14 2xl:h-16 2xl:w-16" />
-          </Button>
-        </Button>
-      </motion.div>
+          AI-Powered{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            Portfolio Analysis
+          </span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
+          className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 text-center max-w-3xl mb-12 leading-relaxed"
+        >
+          Upload your portfolio to receive detailed insights and tailored job
+          matches.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8, ease: "easeInOut" }}
+          className="w-full max-w-2xl"
+        >
+          <div className="relative group">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <Button
+              variant="ghost"
+              className="relative w-full h-20 flex items-center justify-between px-6 bg-white rounded-xl border-2 border-dashed border-gray-300 hover:border-blue-500 transition-all duration-300"
+            >
+              <span className="text-base sm:text-lg text-gray-600">
+                Upload 'PDF' or 'DOC' file
+              </span>
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
+                <UploadIcon className="h-6 w-6 text-white" />
+              </div>
+            </Button>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 }
