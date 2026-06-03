@@ -1,90 +1,127 @@
-import { BrainCircuit, BriefcaseBusiness } from "lucide-react";
+import { BrainCircuit, BriefcaseBusiness, BarChart3, Target } from "lucide-react";
 import { motion } from "framer-motion";
 
+const features = [
+  {
+    number: "01",
+    icon: <BrainCircuit className="w-6 h-6 text-[#00ff88]" />,
+    title: "AI Portfolio Insights",
+    description:
+      "Deep analysis of your projects, skills, and experience. Get a clear picture of your strengths and the gaps holding you back.",
+  },
+  {
+    number: "02",
+    icon: <BriefcaseBusiness className="w-6 h-6 text-[#00ff88]" />,
+    title: "Smart Job Matching",
+    description:
+      "Our algorithms cross-reference your portfolio against thousands of live job listings to surface the roles that fit you best.",
+  },
+  {
+    number: "03",
+    icon: <BarChart3 className="w-6 h-6 text-[#00ff88]" />,
+    title: "Skill Gap Analysis",
+    description:
+      "Know exactly what skills to develop next. Prioritized, actionable recommendations based on market demand.",
+  },
+  {
+    number: "04",
+    icon: <Target className="w-6 h-6 text-[#00ff88]" />,
+    title: "Career Trajectory",
+    description:
+      "Understand where you stand in your field and what it takes to move to the next level — backed by real data.",
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 function InfoSegment() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
   return (
-    <div className="w-full bg-gradient-to-b from-gray-50 to-white py-20">
-      <div className="w-11/12 max-w-7xl mx-auto px-4">
+    <div className="w-full bg-[#080808] border-t border-[#1a1a1a] py-24 px-4">
+      <div className="max-w-7xl mx-auto">
+
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-16"
+        >
+          <p className="text-xs text-[#00ff88] uppercase tracking-widest font-medium mb-4">
+            What We Do
+          </p>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <h2
+              className="text-4xl sm:text-5xl font-bold text-white leading-tight max-w-xl"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+            >
+              Everything you need to
+              <br />
+              <span className="text-[#00ff88]">accelerate your career.</span>
+            </h2>
+            <p className="text-[#555] text-sm max-w-sm leading-relaxed lg:text-right">
+              Built for AI professionals who want clarity, not guesswork. Every
+              feature is designed around one goal — getting you hired.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Divider */}
+        <div className="border-t border-[#1a1a1a] mb-0" />
+
+        {/* Feature grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="flex flex-col items-center space-y-16"
+          className="grid grid-cols-1 md:grid-cols-2 divide-y divide-[#1a1a1a] md:divide-y-0"
         >
-          {/* Header */}
-          <motion.div variants={itemVariants} className="text-center max-w-3xl">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 mb-6">
-              Optimize your portfolio,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                find the right job
-              </span>
-            </h1>
-            <p className="text-base sm:text-lg text-gray-600">
-              Leverage the power of AI to enhance your career prospects
-            </p>
-          </motion.div>
-
-          {/* Info Boxes */}
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Box 1 */}
-            <motion.div variants={itemVariants} className="group relative">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-              <div className="relative bg-white rounded-xl p-8 h-full flex flex-col items-center text-center space-y-6 hover:shadow-xl transition-shadow duration-300">
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-xl">
-                  <BrainCircuit className="text-white w-8 h-8 sm:w-10 sm:h-10" />
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.number}
+              variants={itemVariants}
+              className={`group p-8 border-[#1a1a1a] hover:bg-[#0f0f0f] transition-colors duration-300 cursor-default
+                ${index % 2 === 0 ? "md:border-r" : ""}
+                ${index < 2 ? "md:border-b" : ""}
+                border-b last:border-b-0 md:last:border-b-0
+              `}
+            >
+              <div className="flex items-start gap-5">
+                <span
+                  className="text-xs font-mono text-[#333] group-hover:text-[#00ff88] transition-colors mt-1 shrink-0 w-6"
+                  style={{ fontFamily: 'monospace' }}
+                >
+                  {feature.number}
+                </span>
+                <div className="flex flex-col gap-3">
+                  <div className="w-10 h-10 rounded-sm bg-[#1a1a1a] group-hover:bg-[#00ff88]/10 flex items-center justify-center transition-colors">
+                    {feature.icon}
+                  </div>
+                  <h3
+                    className="text-lg font-semibold text-white"
+                    style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                  >
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-[#555] leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-semibold text-slate-800">
-                  AI Portfolio Insights
-                </h2>
-                <p className="text-base text-gray-600 leading-relaxed">
-                  Utilize AI to identify your strengths and weaknesses in your
-                  portfolio, getting personalized recommendations for
-                  improvement.
-                </p>
               </div>
             </motion.div>
-
-            {/* Box 2 */}
-            <motion.div variants={itemVariants} className="group relative">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-              <div className="relative bg-white rounded-xl p-8 h-full flex flex-col items-center text-center space-y-6 hover:shadow-xl transition-shadow duration-300">
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-xl">
-                  <BriefcaseBusiness className="text-white w-8 h-8 sm:w-10 sm:h-10" />
-                </div>
-                <h2 className="text-xl sm:text-2xl font-semibold text-slate-800">
-                  Job Matching
-                </h2>
-                <p className="text-base text-gray-600 leading-relaxed">
-                  Discover job opportunities that perfectly align with your
-                  skills and experience, powered by advanced AI matching
-                  algorithms.
-                </p>
-              </div>
-            </motion.div>
-          </div>
+          ))}
         </motion.div>
+
+        <div className="border-t border-[#1a1a1a]" />
       </div>
     </div>
   );

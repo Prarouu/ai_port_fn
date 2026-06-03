@@ -1,126 +1,159 @@
 import { motion } from "framer-motion";
-
 import {
-  UploadCloud,
-  BrainCircuit,
-  BriefcaseBusiness,
-  Rocket,
+  UploadCloud, BrainCircuit, BriefcaseBusiness, Rocket,
+  ShieldCheck, Zap, LayoutDashboard,
 } from "lucide-react";
-import { ShieldCheck, Zap, LayoutDashboard } from "lucide-react";
-
-const features = [
-  {
-    icon: <ShieldCheck className="h-10 w-10 text-blue-600 mb-4" />,
-    title: "Secure & Reliable",
-    description:
-      "Your data and portfolio are kept safe and never shared without permission.",
-  },
-  {
-    icon: <Zap className="h-10 w-10 text-blue-600 mb-4" />,
-    title: "Fast AI Analysis",
-    description:
-      "Our smart AI evaluates your portfolio instantly and with precision.",
-  },
-  {
-    icon: <LayoutDashboard className="h-10 w-10 text-blue-600 mb-4" />,
-    title: "User-Friendly Dashboard",
-    description:
-      "Simple and elegant UI that's easy to navigate, even for beginners.",
-  },
-];
 
 const steps = [
   {
-    icon: <UploadCloud className="h-8 w-8 text-white" />,
-    title: "Upload Portfolio",
-    description: "Add your AI projects or resume to begin analysis.",
+    number: "01",
+    icon: <UploadCloud className="w-5 h-5 text-[#00ff88]" />,
+    title: "Upload Your Portfolio",
+    description: "Add your AI projects, resume, or GitHub profile to begin. Supports PDF, DOC, and URL formats.",
   },
   {
-    icon: <BrainCircuit className="h-8 w-8 text-white" />,
+    number: "02",
+    icon: <BrainCircuit className="w-5 h-5 text-[#00ff88]" />,
     title: "Get Smart Insights",
-    description: "Let our AI evaluate your skills and identify gaps.",
+    description: "Our AI evaluates your skills, project depth, and market relevance — identifying exactly where you stand.",
   },
   {
-    icon: <BriefcaseBusiness className="h-8 w-8 text-white" />,
+    number: "03",
+    icon: <BriefcaseBusiness className="w-5 h-5 text-[#00ff88]" />,
     title: "Match with Jobs",
-    description: "Explore opportunities tailored to your AI strengths.",
+    description: "Explore curated opportunities tailored to your specific AI strengths and career goals.",
   },
   {
-    icon: <Rocket className="h-8 w-8 text-white" />,
+    number: "04",
+    icon: <Rocket className="w-5 h-5 text-[#00ff88]" />,
     title: "Launch Your Career",
-    description: "Apply confidently and grow in your AI journey.",
+    description: "Apply confidently with a clear understanding of your value. Track your progress over time.",
+  },
+];
+
+const features = [
+  {
+    icon: <ShieldCheck className="w-6 h-6 text-[#00ff88]" />,
+    title: "Secure & Private",
+    description: "Your data is encrypted and never shared without explicit permission. You stay in control.",
+  },
+  {
+    icon: <Zap className="w-6 h-6 text-[#00ff88]" />,
+    title: "Instant Analysis",
+    description: "Results in under 30 seconds. No waiting, no queues — just immediate, actionable intelligence.",
+  },
+  {
+    icon: <LayoutDashboard className="w-6 h-6 text-[#00ff88]" />,
+    title: "Clean Dashboard",
+    description: "Every insight presented with clarity. No noise, no bloat — just what you need to act.",
   },
 ];
 
 function InfoAbout() {
   return (
     <>
-      <section className="w-11/12 max-w-6xl mx-auto py-20">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5, ease: "easeInOut" }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16 text-slate-800"
-        >
-          How It Works
-        </motion.h2>
-
-        <div className="relative border-l-2 border-blue-200 pl-8 space-y-16">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.5 }}
-              className="relative"
+      {/* How It Works */}
+      <section className="w-full bg-[#080808] border-t border-[#1a1a1a] py-24 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-16"
+          >
+            <p className="text-xs text-[#00ff88] uppercase tracking-widest font-medium mb-4">
+              The Process
+            </p>
+            <h2
+              className="text-4xl sm:text-5xl font-bold text-white leading-tight"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
-              <div className="absolute -left-10 top-0 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full h-14 w-14 flex items-center justify-center shadow-lg">
-                {step.icon}
-              </div>
+              How it works.
+            </h2>
+          </motion.div>
 
-              <div className="ml-4 sm:ml-8 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
-                <h3 className="text-xl sm:text-2xl font-semibold text-slate-800 mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-base text-slate-600 leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+          <div className="border-t border-[#1a1a1a]">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group flex items-start gap-8 py-8 border-b border-[#1a1a1a] hover:bg-[#0f0f0f] px-4 -mx-4 transition-colors duration-200"
+              >
+                <span className="text-xs font-mono text-[#333] group-hover:text-[#00ff88] transition-colors mt-1 w-8 shrink-0">
+                  {step.number}
+                </span>
+                <div className="w-9 h-9 rounded-sm bg-[#1a1a1a] group-hover:bg-[#00ff88]/10 flex items-center justify-center shrink-0 transition-colors">
+                  {step.icon}
+                </div>
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between w-full gap-3">
+                  <h3
+                    className="text-lg font-semibold text-white sm:w-56 shrink-0"
+                    style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-[#555] leading-relaxed max-w-xl">
+                    {step.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-gray-50 to-white py-20 px-4 sm:px-8 lg:px-24">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16 text-slate-800"
-        >
-          Why Choose Us?
-        </motion.h2>
-
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.5 }}
-              className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+      {/* Why Choose Us */}
+      <section className="w-full bg-[#080808] border-t border-[#1a1a1a] py-24 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-16"
+          >
+            <p className="text-xs text-[#00ff88] uppercase tracking-widest font-medium mb-4">
+              Why Alyzer
+            </p>
+            <h2
+              className="text-4xl sm:text-5xl font-bold text-white leading-tight"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
-              <div className="bg-blue-50 p-4 rounded-xl inline-block mb-6">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl sm:text-2xl font-semibold mb-4 text-slate-800">
-                {feature.title}
-              </h3>
-              <p className="text-base text-slate-600 leading-relaxed">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
+              Built differently.
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-[#1a1a1a]">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`group p-8 hover:bg-[#0f0f0f] transition-colors duration-300
+                  ${index < features.length - 1 ? "md:border-r border-b md:border-b-0 border-[#1a1a1a]" : ""}
+                `}
+              >
+                <div className="w-12 h-12 rounded-sm bg-[#1a1a1a] group-hover:bg-[#00ff88]/10 flex items-center justify-center mb-6 transition-colors">
+                  {feature.icon}
+                </div>
+                <h3
+                  className="text-lg font-semibold text-white mb-3"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                >
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-[#555] leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
     </>

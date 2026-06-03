@@ -1,51 +1,57 @@
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 function HeroAbout() {
-  const buttonVariants = {
-    initial: { opacity: 0, y: 25 },
-    animate: { opacity: 1, y: 0, transition: { delay: 0.5, duration: 0.8 } },
-    hover: { scale: 1.05, transition: { duration: 0.2, delay: 0 } },
-    tap: { scale: 0.95 },
-  };
-
   return (
-    <section className="w-full bg-gradient-to-b from-gray-50 to-gray-100 py-24 px-4 text-center flex flex-col items-center justify-center relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+    <section className="relative w-full min-h-[60vh] bg-[#080808] grid-bg overflow-hidden flex flex-col items-center justify-center pt-24 pb-16 px-4">
+      {/* Radial glow */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-[500px] h-[500px] rounded-full bg-[#00ff88]/4 blur-[100px]" />
       </div>
 
-      <div className="max-w-4xl relative z-10">
-        <motion.h1
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-800 mb-8 leading-tight"
-        >
-          Empowering AI talent,{" "}
-          <span className="text-blue-600">one portfolio at a time.</span>
-        </motion.h1>
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
         <motion.p
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-          className="text-base sm:text-lg md:text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed"
+          transition={{ duration: 0.4 }}
+          className="text-xs text-[#00ff88] uppercase tracking-widest font-medium mb-6"
         >
-          Alyzer helps you evaluate your AI portfolio and connects you to career
-          opportunities that match your skills.
+          About Alyzer
         </motion.p>
-        <motion.button
-          variants={buttonVariants}
-          initial="initial"
-          animate="animate"
-          whileHover="hover"
-          whileTap="tap"
-          className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-full text-base sm:text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-tight tracking-tight"
+          style={{ fontFamily: 'Space Grotesk, sans-serif' }}
         >
-          Upload Your Portfolio
-        </motion.button>
+          Empowering AI talent,
+          <br />
+          <span className="text-[#00ff88]">one portfolio at a time.</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-6 text-base sm:text-lg text-[#555] max-w-2xl mx-auto leading-relaxed"
+        >
+          Alyzer was built for a simple reason — AI professionals deserve better
+          tools to understand their value and find work that matches it.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-10 flex items-center justify-center gap-4"
+        >
+          <button className="btn-primary flex items-center gap-2 px-7 py-3.5 rounded-sm text-sm font-semibold">
+            Upload Your Portfolio
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </motion.div>
       </div>
     </section>
   );

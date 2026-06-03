@@ -1,62 +1,119 @@
 import { Button } from "../ui/button";
-import { UploadIcon } from "lucide-react";
+import { Upload, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 
 function Hero() {
+  const fileRef = useRef<HTMLInputElement>(null);
+
   return (
-    <div className="relative w-full min-h-[80vh] bg-gradient-to-b from-gray-50 to-gray-100 overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+    <div className="relative w-full min-h-screen bg-[#080808] grid-bg overflow-hidden flex flex-col items-center justify-center pt-16">
+      {/* Radial glow */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-[600px] h-[600px] rounded-full bg-[#00ff88]/5 blur-[120px]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 flex flex-col items-center justify-center min-h-[80vh]">
-        <motion.h1
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-center text-slate-800 mb-8 leading-tight"
-        >
-          AI-Powered{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-            Portfolio Analysis
-          </span>
-        </motion.h1>
+      {/* Top label */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="relative z-10 flex items-center gap-2 border border-[#222] rounded-full px-4 py-1.5 mb-8"
+      >
+        <Sparkles className="w-3.5 h-3.5 text-[#00ff88]" />
+        <span className="text-xs text-[#888] tracking-widest uppercase font-medium">
+          AI-Powered Career Intelligence
+        </span>
+      </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-          className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 text-center max-w-3xl mb-12 leading-relaxed"
-        >
-          Upload your portfolio to receive detailed insights and tailored job
-          matches.
-        </motion.p>
+      {/* Main heading */}
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="relative z-10 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-center text-white leading-[1.05] tracking-tight max-w-5xl px-4"
+        style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+      >
+        Analyze your portfolio.
+        <br />
+        <span className="text-[#00ff88]">Land the right job.</span>
+      </motion.h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8, ease: "easeInOut" }}
-          className="w-full max-w-2xl"
+      {/* Subheading */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="relative z-10 mt-6 text-base sm:text-lg text-[#888] text-center max-w-xl px-4 leading-relaxed"
+      >
+        Upload your portfolio and let our AI surface deep insights, skill gaps,
+        and job matches tailored to your career trajectory.
+      </motion.p>
+
+      {/* CTA buttons */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="relative z-10 mt-10 flex flex-col sm:flex-row items-center gap-4"
+      >
+        <button
+          onClick={() => fileRef.current?.click()}
+          className="btn-primary flex items-center gap-2 px-7 py-3.5 rounded-sm text-sm font-semibold"
         >
-          <div className="relative group">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-            <Button
-              variant="ghost"
-              className="relative w-full h-20 flex items-center justify-between px-6 bg-white rounded-xl border-2 border-dashed border-gray-300 hover:border-blue-500 transition-all duration-300"
-            >
-              <span className="text-base sm:text-lg text-gray-600">
-                Upload 'PDF' or 'DOC' file
-              </span>
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
-                <UploadIcon className="h-6 w-6 text-white" />
-              </div>
-            </Button>
+          <Upload className="w-4 h-4" />
+          Upload Portfolio
+        </button>
+        <button className="btn-outline flex items-center gap-2 px-7 py-3.5 rounded-sm text-sm font-semibold">
+          See How It Works
+          <ArrowRight className="w-4 h-4" />
+        </button>
+        <input ref={fileRef} type="file" accept=".pdf,.doc,.docx" className="hidden" />
+      </motion.div>
+
+      {/* Upload zone */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.45 }}
+        className="relative z-10 mt-16 w-full max-w-2xl px-4"
+      >
+        <button
+          onClick={() => fileRef.current?.click()}
+          className="w-full group border border-dashed border-[#333] hover:border-[#00ff88] bg-[#0f0f0f] hover:bg-[#00ff88]/5 rounded-lg p-10 flex flex-col items-center gap-3 transition-all duration-300"
+        >
+          <div className="w-12 h-12 rounded-sm bg-[#1a1a1a] group-hover:bg-[#00ff88]/10 flex items-center justify-center transition-colors">
+            <Upload className="w-5 h-5 text-[#555] group-hover:text-[#00ff88] transition-colors" />
           </div>
-        </motion.div>
-      </div>
+          <p className="text-[#555] group-hover:text-[#888] text-sm transition-colors">
+            Drop your <span className="text-[#888] group-hover:text-white">PDF or DOC</span> file here
+          </p>
+          <p className="text-[#333] text-xs">Max file size: 10MB</p>
+        </button>
+      </motion.div>
+
+      {/* Stats bar */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        className="relative z-10 mt-16 w-full max-w-3xl px-4 pb-16"
+      >
+        <div className="border-t border-[#1a1a1a] pt-8 grid grid-cols-3 gap-6 text-center">
+          {[
+            { value: "10K+", label: "Portfolios Analyzed" },
+            { value: "94%", label: "Job Match Rate" },
+            { value: "3x", label: "Faster Hiring" },
+          ].map((stat) => (
+            <div key={stat.label}>
+              <p className="text-2xl sm:text-3xl font-bold text-white" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                {stat.value}
+              </p>
+              <p className="text-xs text-[#555] mt-1 uppercase tracking-widest">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </motion.div>
     </div>
   );
 }
