@@ -1,4 +1,3 @@
-import { Button } from "../ui/button";
 import { Upload, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRef } from "react";
